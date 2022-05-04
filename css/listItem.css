@@ -1,0 +1,149 @@
+main{
+    padding: 60px 0px;
+    display: flex;
+}
+
+.colums-movies{
+    width: 75%;
+}
+
+.column-filters{
+    width: 25%;
+    margin-right: 30px;
+}
+
+.search-div,
+.category-div{
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--box-radius);
+    padding: 15px 20px;
+    margin-bottom: 30px;
+}
+
+.category-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cat-btn{
+    cursor: pointer;
+    border: var(--border);
+    border-radius: var(--box-radius);
+    padding: 6px 15px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.cat-btn:hover{
+    border-color: var(--c-blue);
+    background-color: var(--c-blue);
+    color: var(--c-white);
+}
+
+.cat-btn-active{
+    border-color: var(--c-blue);
+    background-color: var(--c-blue);
+    color: var(--c-white);
+}
+
+.all-movies-title{
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.search-title,
+.category-title{
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.category-title{
+    margin-bottom: 6px;
+}
+
+input{
+    font-size: 14px;
+    padding: 13px;
+    border: none;
+    border-radius: var(--box-radius);
+    background-color: #e4e7eb;
+    width: 100%;
+}
+
+:focus-visible {
+    outline: 0px;
+}
+
+img{
+    width: 100%;
+    border-top-left-radius: var(--box-radius);
+    border-top-right-radius: var(--box-radius);
+}
+
+.movies-grid{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 30px;
+}
+
+.grid-item{
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--box-radius);
+    position: relative;
+}
+
+a{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+h2{
+    font-size: 18px;
+    margin: 0px 10px;
+    margin-top: 5px;
+}
+
+p{
+    color: var(--c-grey-text);
+    font-size: 15px;
+    margin: 0px 10px;
+    margin-top: 2px;
+    margin-bottom: 30px;
+}
+
+.pagination-section{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagintation-div{
+    display: flex;
+}
+
+.page{
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 5px;
+    border-radius: var(--box-radius);
+    background-color: #e4e7eb46;
+    margin-right: 8px;
+}
+
+.page:hover{
+    background-color: #e4e7eb;
+}
+
+.page-active{
+    background-color: #e4e7eb;
+}
