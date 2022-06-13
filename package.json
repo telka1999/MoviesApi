@@ -1,0 +1,23 @@
+{
+  "name": "moviesapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "listItem.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/telka1999/MoviesApi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/telka1999/MoviesApi/issues"
+  },
+  "homepage": "https://github.com/telka1999/MoviesApi#readme",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
