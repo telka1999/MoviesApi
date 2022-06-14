@@ -47,6 +47,4 @@ export interface ApiData {
         }
     }
     length:number
-    slice:any
-    map:any
 }

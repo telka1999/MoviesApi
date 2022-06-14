@@ -1,5 +1,7 @@
 import {ApiData}  from "./ApiData";
 
+interface ApiDataArr extends Array<ApiData>{}
+
 const url = 'https://api.tvmaze.com/shows';
 const moviesGrid = document.querySelector(".movies-grid") as HTMLDivElement;
 const input = document.querySelector("input") as HTMLInputElement;
@@ -24,7 +26,7 @@ const fetchData = async (urlApi: string)=>{
 
 //Pagination
 
-const pagination = (data: ApiData)=>{
+const pagination = (data: ApiDataArr)=>{
 
     const itemsPerPage = 45;
     const numberOdPages = Math.ceil(data.length / itemsPerPage);
@@ -40,7 +42,7 @@ const pagination = (data: ApiData)=>{
 const btnsDiv = document.querySelector('.pagintation-div') as HTMLDivElement;
 
 let index: number = 0;
-let pages: ApiData[] = [];
+let pages: ApiDataArr[] = [];
 
 //Rendering movies
 
@@ -116,7 +118,7 @@ const displayMovies = async ()=>{
 
     //Rendering pagination
 
-    function displayPagination(arr: ApiData){
+    function displayPagination(arr: ApiDataArr){
 
         pages = pagination(arr);
 
