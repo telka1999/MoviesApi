@@ -1,5 +1,9 @@
 import {ApiData}  from "./ApiData";
 
+interface ApiSearch {
+    show: ApiData
+}
+
 interface ApiDataArr extends Array<ApiData>{}
 
 const url = 'https://api.tvmaze.com/shows';
@@ -9,10 +13,10 @@ const form = document.querySelector(".search-div") as HTMLFormElement;
 
 //Fetching api
 
-const fetchData = async (urlApi: string)=>{
+const fetchData = async (urlApi: string, additionalText?: string)=>{
     try {
         
-        moviesGrid.innerHTML =`<h1>Loading...</h1>`;
+        moviesGrid.innerHTML =`<h1 style="position: absolute" >${additionalText}<br> Loading...</h1>`;
         const resolve = await fetch(urlApi);
         const data = await resolve.json();
         return data;
@@ -168,16 +172,15 @@ const displayMovies = async ()=>{
 
         const list = newPage.map((movie: ApiData)=>{
 
-            const {premiered,name} = movie;
-            const img = movie.image.medium;
+            const {premiered,name,url} = movie;
+            const img = movie.image.medium;           
 
-            const movieItem = `<div class="grid-item">
-                                    <a href="${movie.url}"></a>
-                                    <img src="${img}" alt="">
-                                    <h2>${name}</h2>
-                                    <p>${premiered}</p>
-                                </div>`;
-            return movieItem;
+            return  `<div class="grid-item">
+                        <a href="${url}"></a>
+                        <img src="${img}" alt="">
+                        <h2>${name}</h2>
+                        <p>${premiered}</p>
+                    </div>`;
 
         }).join('');
         moviesGrid.innerHTML = `${list}`;
@@ -208,22 +211,21 @@ form.addEventListener('keyup', (e)=>{
 
             btnsDiv.innerHTML =''
 
-            const data = await fetchData(`https://api.tvmaze.com/search/shows?q=${input.value}`);
+            const data = await fetchData(`https://api.tvmaze.com/search/shows?q=${input.value}`,`Can't find try to write more`);
 
-            const newData = data.filter((movie: ApiData)=>movie.image!==null);
+            const newData = data.filter((movie: ApiSearch)=>movie.show.image!==null);        
 
-            const list = newData.map((movie: ApiData)=>{
+            const list = newData.map((movie: ApiSearch)=>{
 
-                const {id,premiered,name} = movie;
-                const img = movie.image.medium;
-        
-                const movieItem = `<div class="grid-item">
-                                        <a href="./singleItem.html?id=${id}"></a>
-                                        <img src="${img}" alt="">
-                                        <h2>${name}</h2>
-                                        <p>${premiered}</p>
-                                    </div>`;
-                return movieItem;
+                const {id,premiered,name} = movie.show;
+                const img = movie.show.image.medium;                         
+    
+                return `<div class="grid-item">
+                            <a href="./singleItem.html?id=${id}"></a>
+                            <img src="${img}" alt="">
+                            <h2>${name}</h2>
+                            <p>${premiered}</p>
+                        </div>`;
 
             }).join('');
 
